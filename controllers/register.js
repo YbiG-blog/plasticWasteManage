@@ -6,7 +6,7 @@ const registerUser = async ({ body }, res) => {
     try {
       const { name, email, phone, role, password, address, city, pin, state } = body;
 
-      if ( role == "VENDER" || role == "SELLER" || role == "ADMIN") {
+      if ( role == "VENDER" || role == "SELLER" ) {
         const User = getModelFromRole(role);
         const user =  new User({ name, email, phone, role, password, address, city, pin, state });
         const userExist = await User.findOne({ email });
