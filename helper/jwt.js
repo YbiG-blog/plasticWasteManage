@@ -25,7 +25,8 @@ const JWTMiddleware = async (req, res, next) => {
 const JWTEncrypt = document => {
     return jwt.sign({
         _id: document._id,
-        role : document.role
+        role : document.role,
+        name : document.name
     }, jwt_token_secret)
 }
 module.exports = { JWTMiddleware, JWTEncrypt }

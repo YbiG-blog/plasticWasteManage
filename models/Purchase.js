@@ -1,8 +1,8 @@
 const mongoose  =  require("mongoose");
 const { Schema } = mongoose;
 
-const sellSchema = new Schema({
-    sellerId: { type: Schema.Types.ObjectId, ref: "Seller" },
+const purchaseSchema = new Schema({
+    venderId: { type: Schema.Types.ObjectId, ref: "Vender" },
     name : { type : String, required: true },
     contact : { type : Number },
     wasteFrom : { type : String, enum : ['Industry', 'HouseHold', 'Market', 'Office'] },
@@ -11,4 +11,4 @@ const sellSchema = new Schema({
     Address : { type : String, required: true }
 }, { timestamps: true });
 // enum:["Seller","Vender"]
-module.exports = mongoose.model("Sell", sellSchema);
+module.exports = mongoose.model("Purchase", purchaseSchema);

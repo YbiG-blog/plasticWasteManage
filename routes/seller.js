@@ -1,7 +1,8 @@
 const express = require("express");
 const router = express.Router();
-// const { JWTMiddleware } = require("../helper/jwt");
+const { addSell } = require("../controllers/seller/sell");
 
+router.post("sell", addSell);
 
 
 module.exports = router;
