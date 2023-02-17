@@ -1,14 +1,14 @@
-const jwt = require('jsonwebtoken')
+const jwt = require('jsonwebtoken');
 
 const { responseTemplate, responseMessage } = require("../utils/errorResponse");
 const jwt_token_secret = process.env.JWT_TOKEN_SECRET;
 
 const JWTMiddleware = async (req, res, next) => { 
-    // let { authorization } = req.headers.jwt_starting_core;
-    const token = req.headers.cookie_token;
+    const token = req.body.cookie_token;
     if (token) {
         try {
             let decryptedToken = jwt.verify(token, jwt_token_secret);
+            console.log(decryptedToken);
             if (decryptedToken) {
                 req.user = decryptedToken;
                 // console.log(decryptedToken)

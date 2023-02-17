@@ -1,14 +1,14 @@
+const { getModelFromRole } = require("../utils/role");
 const { JWTEncrypt } = require("../helper/jwt");
 const { responseTemplate, responseMessage } = require("../utils/errorResponse");
-const { getModelFromRole } = require("../utils/role");
 const bcrypt = require("bcrypt");
 
-const login = async ({ body }, res) => {
+const loginUser = async ({ body }, res) => {
   try {
     const { role, email, password } = body;
     // ! provide role error
     if (role == "ADMIN" || role == "SELLER" || role == "VENDER") {
-      const user = await getModelFromRole(role).findOne( { email },{ password:1, token:1, role:1 } );
+      const user = await getModelFromRole(role).findOne( { email } );
       //not exists
       if (!user) {
         return res.status(401).json(await responseTemplate(false, "This role does not have any account", null, null));
@@ -28,4 +28,4 @@ const login = async ({ body }, res) => {
 };
 
 
-module.exports = { login };
+module.exports = { loginUser };

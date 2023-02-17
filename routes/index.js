@@ -3,7 +3,7 @@ const router = express.Router();
 const sellerControllers = require("../routes/seller");
 const venderControllers = require("../routes/vender");
 const { registerUser } = require("../controllers/register");
-const { login } = require("../controllers/login");
+const { loginUser } = require("../controllers/login");
 const { JWTMiddleware } = require("../helper/jwt");
 // const adminControllers = require("../routes/admin");
 // const routeInfo = require("../helpers/routeInfo");
@@ -12,6 +12,6 @@ const { JWTMiddleware } = require("../helper/jwt");
 router.use("/seller", JWTMiddleware, sellerControllers);
 router.use("/vender", JWTMiddleware, venderControllers);
 router.post("/register", registerUser);
-router.post("/login", login);
+router.post("/login", loginUser);
 
 module.exports = router;
