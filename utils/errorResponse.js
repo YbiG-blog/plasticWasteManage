@@ -6,7 +6,7 @@ const responseTemplate = async (success, message, data, error) => {
         error: !error || Object.keys(error)?.length == 0 ? {} : await (error)
     }
 }
-const errorResponse = {
+const responseMessage = {
     serverError: "Some server error occured",
     unauthorisedAccess: "Unauthorized access!",
     alreadyRegistered: "Account Id already exists.",
@@ -25,4 +25,4 @@ const errorResponse = {
     removeDataSuccess: data => { return `${data[0].toUpperCase() + data.slice(1)} successfully removed from database!` }
 };
 
-module.exports = { responseTemplate, errorResponse };
+module.exports = { responseTemplate, responseMessage };

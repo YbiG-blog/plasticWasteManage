@@ -1,6 +1,7 @@
 require('dotenv').config();
 const express = require('express');
-const http = require('http');
+require("./dbConfig/db");
+// const http = require('http');
 const mongoose = require('mongoose');
 const router = require('./routes/index');
 const cors = require('cors');
@@ -12,12 +13,10 @@ const app = express();
 
 app.use(cookieParser());
 app.use(express.json());
-// app.use(bodyParser.json({ limit: "10mb", extented: true }));
-// app.use(cors({
-//     origin: ['https://localhost:3000'],
-//     credentials: true
-// }));
+
 app.use(cors());
 app.use(router);
-mongoose.set('strictQuery', true);
-m
+
+app.listen(PORT, ()=>{
+    console.log(`Server is runnig successfully on post : ${PORT}`);
+})
