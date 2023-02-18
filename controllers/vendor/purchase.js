@@ -3,10 +3,10 @@ const Purchase = require("../../models/Purchase");
 
 const addPurchase = async ({ body, user }, res) => {
     try {
-        const { contact, wasteFrom, wasteType, weight, address } = body;
+        const { sellerId, contact, wasteFrom, wasteType, weight, address } = body;
         const { _id, name } = user;
         const dataEntry = new Purchase({
-            sellerId: _id, name: name, contact, wasteFrom, wasteType, weight, address
+            vendorId : _id, sellerId, name: name, contact, wasteFrom, wasteType, weightInKg, purchasePricePerKg, address 
         });
         await dataEntry.save();
         return res.status(201).json(await responseTemplate(true, "Purchase ADDED", dataEntry, null));        

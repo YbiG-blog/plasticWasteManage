@@ -4,11 +4,11 @@ const { responseTemplate, responseMessage } = require("../utils/errorResponse");
 const jwt_token_secret = process.env.JWT_TOKEN_SECRET;
 
 const JWTMiddleware = async (req, res, next) => { 
-    const token = req.body.cookie_token;
+    const token = req.body.token;
     if (token) {
         try {
             let decryptedToken = jwt.verify(token, jwt_token_secret);
-            console.log(decryptedToken);
+            // console.log(decryptedToken);
             if (decryptedToken) {
                 req.user = decryptedToken;
                 // console.log(decryptedToken)

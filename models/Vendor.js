@@ -1,7 +1,7 @@
 const mongoose  =  require("mongoose");
 const { Schema } = mongoose;
 
-const venderSchema = new Schema({
+const vendorSchema = new Schema({
     name : { type : String, required: true },
     email : { type : String, required: true, unique : true },
     phone : { type : Number, required: true },
@@ -14,4 +14,4 @@ const venderSchema = new Schema({
     token: { type: String }
 }, { timestamps: true });
 
-module.exports = mongoose.model("Vender", venderSchema);
+module.exports = mongoose.model("Vendor", vendorSchema);

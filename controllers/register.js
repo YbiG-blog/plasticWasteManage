@@ -4,9 +4,9 @@ const bcrypt = require("bcrypt");
 const { responseTemplate, responseMessage } = require("../utils/errorResponse");
 const registerUser = async ({ body }, res) => {
     try {
-      const { name, email, phone, role, password, address, city, pin, state } = body;
-
-      if ( role == "VENDER" || role == "SELLER" ) {
+      let { name, email, phone, role, password, address, city, pin, state } = body;
+      city = city.toLowerCase();
+      if ( role == "VENDOR" || role == "SELLER"  ) {
         const User = getModelFromRole(role);
         const user =  new User({ name, email, phone, role, password, address, city, pin, state });
         const userExist = await User.findOne({ email });
@@ -17,6 +17,7 @@ const registerUser = async ({ body }, res) => {
         //save
         const token = JWTEncrypt(user);
         user.token = token;
+
         await user.save();
         return res.status(201).json(await responseTemplate(true, responseMessage.registerSuccess, user, null));
       }

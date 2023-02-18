@@ -7,7 +7,7 @@ const loginUser = async ({ body }, res) => {
   try {
     const { role, email, password } = body;
     // ! provide role error
-    if (role == "ADMIN" || role == "SELLER" || role == "VENDER") {
+    if (role == "ADMIN" || role == "SELLER" || role == "VENDOR") {
       const user = await getModelFromRole(role).findOne( { email } );
       //not exists
       if (!user) {

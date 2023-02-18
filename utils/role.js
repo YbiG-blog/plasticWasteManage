@@ -1,11 +1,11 @@
 const Admin = require("../models/Admin");
 const Seller = require("../models/Seller");
-const Vender = require("../models/Vender");
+const Vendor = require("../models/Vendor");
 
 const getModelFromRole = role => {
     if(role === 'ADMIN') return Admin;
     else if(role === 'SELLER') return Seller;
-    else if(role === 'VENDER') return Vender;
+    else if(role === 'VENDOR') return Vendor;
     return null;
 }
 

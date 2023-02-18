@@ -7,8 +7,8 @@ const sellSchema = new Schema({
     contact : { type : Number },
     wasteFrom : { type : String, enum : ['Industry', 'HouseHold', 'Market', 'Office'] },
     wasteType : { type : String, enum : ['Plastic', 'Paper', 'Metal', 'Glass', 'Organic'] },
-    weight : { type : Number, default: 0 },
-    address : { type : String, required: true }
+    weightInKg : { type : Number, default: 0 },
+    pricePerKg : {type : Number, default: 0},
 }, { timestamps: true });
 // enum:["Seller","Vender"]
 module.exports = mongoose.model("Sell", sellSchema);
