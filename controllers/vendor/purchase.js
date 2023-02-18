@@ -3,7 +3,7 @@ const Purchase = require("../../models/Purchase");
 
 const addPurchase = async ({ body, user }, res) => {
     try {
-        const { sellerId, contact, wasteFrom, wasteType, weight, address } = body;
+        const { sellerId, contact, wasteFrom, wasteType, weightInKg, address } = body;
         const { _id, name } = user;
         const dataEntry = new Purchase({
             vendorId : _id, sellerId, name: name, contact, wasteFrom, wasteType, weightInKg, purchasePricePerKg, address 
