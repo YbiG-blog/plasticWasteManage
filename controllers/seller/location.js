@@ -24,14 +24,14 @@ const getLocationResult = async ( { body }, res )=>{
                 key : "location.coordinates",
                 maxDistance : parseFloat(1000)*3000,
                 distanceField : "dist.calculated",
-                spherical : true  } },
-                {$project : { _id :1, sellerId :1 }} 
+                spherical : true  } }
             ,{$lookup :{
             from : "sellers",
             localField : "sellerId",
             foreignField : "_id",
             as : "seller" }
-        },]);
+        },{$project : { seller: { name :1, phone :1, email:1, city: 1}}} 
+    ]);
                 
         return res.status(200).json({ success: true, message : "get result " , data: getResult });
     } catch (e) {
