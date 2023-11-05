@@ -15,8 +15,9 @@ app.use(cookieParser());
 app.use(express.json());
 
 app.use(cors());
+app.get('/', (req, res)=>{  return res.send("Hi, APIs are working here."); })
 app.use(router);
 
 app.listen(PORT, ()=>{
-    console.log(`Server is runnig successfully on post : ${PORT}`);
+    console.log(`Server is running successfully on post : ${PORT}`);
 })
